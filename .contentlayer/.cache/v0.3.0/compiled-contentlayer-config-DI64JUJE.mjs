@@ -1,14 +1,13 @@
+// contentlayer.config.js
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-
-/** @type {import('contentlayer/source-files').ComputedFields} */
-const computedFields = {
+var computedFields = {
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath,
+    resolve: (doc) => doc._raw.flattenedPath
   },
   tweetIds: {
     type: "array",
@@ -17,7 +16,7 @@ const computedFields = {
         /<StaticTweet\sid="[0-9]+"\s\/>/g
       );
       return tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]) || [];
-    },
+    }
   },
   structuredData: {
     type: "object",
@@ -28,43 +27,39 @@ const computedFields = {
       datePublished: doc.publishedAt,
       dateModified: doc.publishedAt,
       description: doc.summary,
-      image: doc.image
-        ? doc.image
-        : `https://saportfolio.vercel.app/api/og?title=${doc.title}`,
+      image: doc.image ? doc.image : `https://saportfolio.vercel.app/api/og?title=${doc.title}`,
       url: `https://saportfolio.vercel.app/blog/${doc._raw.flattenedPath}`,
       author: {
         "@type": "Person",
-        name: "Lee Robinson",
-      },
-    }),
-  },
+        name: "Lee Robinson"
+      }
+    })
+  }
 };
-
-export const Blog = defineDocumentType(() => ({
+var Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: `**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
       type: "string",
-      required: true,
+      required: true
     },
     publishedAt: {
       type: "string",
-      required: true,
+      required: true
     },
     summary: {
       type: "string",
-      required: true,
+      required: true
     },
     image: {
-      type: "string",
-    },
+      type: "string"
+    }
   },
-  computedFields,
+  computedFields
 }));
-
-export default makeSource({
+var contentlayer_config_default = makeSource({
   contentDirPath: "content",
   documentTypes: [Blog],
   mdx: {
@@ -76,8 +71,6 @@ export default makeSource({
         {
           theme: "one-dark-pro",
           onVisitLine(node) {
-            // Prevent lines from collapsing in `display: grid` mode, and allow empty
-            // lines to be copy/pasted
             if (node.children.length === 0) {
               node.children = [{ type: "text", value: " " }];
             }
@@ -87,17 +80,22 @@ export default makeSource({
           },
           onVisitHighlightedWord(node) {
             node.properties.className = ["word--highlighted"];
-          },
-        },
+          }
+        }
       ],
       [
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ["anchor"],
-          },
-        },
-      ],
-    ],
-  },
+            className: ["anchor"]
+          }
+        }
+      ]
+    ]
+  }
 });
+export {
+  Blog,
+  contentlayer_config_default as default
+};
+//# sourceMappingURL=compiled-contentlayer-config-DI64JUJE.mjs.map

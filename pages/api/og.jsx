@@ -24,7 +24,7 @@ export default async function handler(req) {
           alignItems: "flex-start",
           justifyContent: "center",
           backgroundImage:
-            "url(https://sa-portfolio-wine.vercel.app/image/og-bg.jpg)",
+            "url(https://saportfolio.vercel.app/image/og-bg.jpg)",
         }}
       >
         <div
