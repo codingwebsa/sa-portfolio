@@ -23,7 +23,8 @@ export default async function handler(req) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: "url(https://leerob.io/og-bg.png)",
+          backgroundImage:
+            "url(https://sa-portfolio-wine.vercel.app/image/og-bg.jpg)",
         }}
       >
         <div

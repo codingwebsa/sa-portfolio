@@ -28,11 +28,10 @@ const computedFields = {
       datePublished: doc.publishedAt,
       dateModified: doc.publishedAt,
       description: doc.summary,
-      image: doc.image,
-      //   image: doc.image
-      //     ? `https://leerob.io${doc.image}`
-      //     : `https://leerob.io/api/og?title=${doc.title}`,
-      url: `https://leerob.io/blog/${doc._raw.flattenedPath}`,
+      image: doc.image
+        ? doc.image
+        : `https://sa-portfolio-wine.vercel.app/api/og?title=${doc.title}`,
+      url: `https://sa-portfolio-wine.vercel.app/blog/${doc._raw.flattenedPath}`,
       author: {
         "@type": "Person",
         name: "Lee Robinson",
