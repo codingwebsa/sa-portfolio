@@ -3,13 +3,10 @@ import "@/styles/globals.css";
 import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
-  const { metadata } = Component;
   return (
     <>
       <Head>
-        <title>
-          {metadata ? metadata.title : `${Component.name} - Coding SA`}
-        </title>
+        <title>Saif A</title>
         <link rel="shortcut icon" href="favicon-sa.ico" type="image/x-icon" />
       </Head>
       <Layout>

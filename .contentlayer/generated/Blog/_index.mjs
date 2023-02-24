@@ -2,5 +2,6 @@
 
 import getStartedWithNextjsMdx from './get-started-with-nextjs.mdx.json' assert { type: 'json' }
 import webFonts_2021Mdx from './web-fonts-2021.mdx.json' assert { type: 'json' }
+import switchingToTailwindcssMdx from './switching-to-tailwindcss.mdx.json' assert { type: 'json' }
 
-export const allBlogs = [getStartedWithNextjsMdx, webFonts_2021Mdx]
+export const allBlogs = [getStartedWithNextjsMdx, webFonts_2021Mdx, switchingToTailwindcssMdx]

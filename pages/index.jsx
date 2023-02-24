@@ -82,7 +82,4 @@ const Home = () => {
   );
 };
 
-Home.metadata = {
-  title: "Coding sa",
-};
 export default Home;
