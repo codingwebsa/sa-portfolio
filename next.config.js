@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     formats: ["image/webp", "image/avif"],
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "saportfolio.vercel.app"],
   },
 };
 module.exports = withContentlayer(nextConfig);

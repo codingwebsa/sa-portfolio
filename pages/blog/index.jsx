@@ -6,7 +6,7 @@ export default function BlogPage() {
   return (
     <section>
       <h1 className="font-bold text-3xl font-serif mb-5">Blog</h1>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
         {allBlogs
           .sort((a, b) => {
             if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
@@ -21,7 +21,10 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
             >
               <Image
-                src={post.image}
+                src={
+                  post.image ||
+                  `https://saportfolio.vercel.app/api/og?title=${post.title}`
+                }
                 className="rounded"
                 alt={post.title}
                 width={270}
