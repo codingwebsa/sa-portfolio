@@ -4,7 +4,6 @@ import { SignIn, SignOut } from "@/lib/actions";
 
 export default function GuestbookPage() {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <section>
       <h1 className="font-bold text-3xl font-serif mb-5">Guestbook</h1>

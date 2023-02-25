@@ -15,8 +15,10 @@ export function SignOut() {
 export function SignIn() {
   return (
     <button
-      //   className="flex bg-black text-neutral-200 px-8 py-3 rounded-md font-semibold text-sm mb-4 hover:text-white transition-all border border-gray-800"
-      className="flex border border-gray-800 p-8"
+      className="flex bg-black text-neutral-200 px-4 py-3 rounded-md font-semibold text-sm mb-4 hover:text-white transition-all border border-gray-800"
+      style={{
+        padding: ".75rem 1rem",
+      }}
       onClick={() => signIn("github")}
     >
       <GitHubIcon />
