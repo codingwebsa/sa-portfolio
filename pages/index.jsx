@@ -18,7 +18,7 @@ const Home = () => {
         <div className="flex items-start md:items-center my-8 flex-col md:flex-row">
           <Image
             alt={name}
-            className="rounded-full grayscale"
+            className="rounded-full grayscale aspect-square object-cover"
             src={avatar}
             placeholder="blur"
             width={100}

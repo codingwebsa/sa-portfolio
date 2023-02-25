@@ -11,7 +11,11 @@ export default function App({
     <>
       <Head>
         <title>Saif A</title>
-        <link rel="shortcut icon" href="favicon-sa.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="favicon-sa.png" type="image/x-icon" />
+        <meta
+          name="og:image:url"
+          content="https://saportfolio.vercel.app/og.jpg"
+        />
       </Head>
       <SessionProvider session={session}>
         <Layout>
