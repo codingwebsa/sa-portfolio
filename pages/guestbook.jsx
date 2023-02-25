@@ -1,8 +1,9 @@
 import { Form } from "@/components";
 import { useSession } from "next-auth/react";
 import { SignIn, SignOut } from "@/lib/actions";
+import { supabase } from "@/lib/supabase";
 
-export default function GuestbookPage() {
+export default function GuestbookPage({ comments }) {
   const { data: session } = useSession();
   return (
     <section>
@@ -15,25 +16,28 @@ export default function GuestbookPage() {
       ) : (
         <SignIn />
       )}
-      {/* {entries.map((entry) => (
-        <div key={entry.id} className="flex flex-col space-y-1 mb-4">
-          <div className="w-full text-sm">
-            <span className="text-neutral-600 dark:text-neutral-400 mr-1">
-              {entry.created_by}:
-            </span>
-            {entry.body}
+      <div className="my-8">
+        {comments.map((entry) => (
+          <div key={entry.id} className="flex flex-col space-y-1 mb-4">
+            <div className="w-full text-sm">
+              <span className="text-neutral-600 dark:text-neutral-400 mr-1">
+                {entry.name}:
+              </span>
+              {entry.comment}
+            </div>
           </div>
-        </div>
-      ))} */}
+        ))}
+      </div>
     </section>
   );
 }
 
-// export async function getServerSideProps(ctx) {
-//   const session = await getSession(ctx);
-//   return {
-//     props: {
-//       session,
-//     },
-//   };
-// }
+export async function getServerSideProps(ctx) {
+  let { data } = await supabase.from("comments").select();
+
+  return {
+    props: {
+      comments: data,
+    },
+  };
+}
