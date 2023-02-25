@@ -32,8 +32,34 @@ const navItems = {
 
 function Logo() {
   return (
-    <Link aria-label="Lee Robinson" href="/">
+    <Link aria-label="Saif A." href="/">
       <motion.svg
+        className="text-black dark:text-white h-[25px] md:h-[37px]"
+        width="50"
+        height="70"
+        viewBox="0 0 450 400"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <motion.path
+          initial={{
+            opacity: 0,
+            pathLength: 0,
+          }}
+          animate={{
+            opacity: 1,
+            pathLength: 1,
+          }}
+          transition={{
+            duration: 0.5,
+            type: "spring",
+            stiffness: 50,
+          }}
+          d="M138.016 261.192L195.6 146.512L252.696 261.192H325.896L195.6 0.599994L0.4 391H72.624L105.808 325.608L138.016 261.192ZM358.104 326.096H285.88L318.088 391H390.8L358.104 326.096Z"
+          fill="currentColor"
+        />
+      </motion.svg>
+      {/* <motion.svg
         className="text-black dark:text-white h-[25px] md:h-[37px]"
         width="25"
         height="37"
@@ -70,7 +96,7 @@ function Logo() {
           d="M232 314.998H129.852L232 232.887V314.998Z"
           fill="currentColor"
         />
-      </motion.svg>
+      </motion.svg> */}
     </Link>
   );
 }
