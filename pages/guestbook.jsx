@@ -17,7 +17,7 @@ export default function GuestbookPage({ comments }) {
         <SignIn />
       )}
       <div className="my-8">
-        {comments.map((entry) => (
+        {comments.reverse().map((entry) => (
           <div key={entry.id} className="flex flex-col space-y-1 mb-4">
             <div className="w-full text-sm">
               <span className="text-neutral-600 dark:text-neutral-400 mr-1">
