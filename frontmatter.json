@@ -12,13 +12,13 @@
           "type": "string"
         },
         {
-          "title": "Description",
-          "name": "description",
+          "title": "Summary",
+          "name": "summary",
           "type": "string"
         },
         {
           "title": "Publishing date",
-          "name": "date",
+          "name": "publishedAt",
           "type": "datetime",
           "default": "{{now}}",
           "isPublishDate": true

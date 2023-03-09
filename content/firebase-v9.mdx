@@ -1,0 +1,92 @@
+---
+title: Firebase V9
+summary: An esay step to catch with firebase v9
+publishedAt: 2023-03-09
+image: /image/posts/firebase-v9/thambnail.webp
+slug: firebase-v9
+---
+
+Firebase is a multiperpose online platfrom. It can be used as a database with `firestore`, can be used as a storage with `firebase storege`, you can also add **Authentication** in your application with the help of it.
+
+## Create a new firebase project.
+
+- Go to [Firebase Console](https://console.firebase.google.com/) & make sure to login to firebase.
+- To create a new project click on **Add Project**. ![](/image/posts/firebase-v9/1.png)
+- Then fill your project details and click on **Continue** button. ![](/image/posts/firebase-v9/2.png)
+- Enable the Analytics if you want and click on **Continue** button. ![](/image/posts/firebase-v9/3.png)
+- Accept the Google Analytics Terms and click on **Create Project** button.
+- It will take some time and will create your project. Then click on **Continue** to goto your project console. ![](/image/posts/firebase-v9/4.png)
+- You will get a Dashboard like this... ![](/image/posts/firebase-v9/5.png)
+- So you have **Sucessfully** Created your new firebase project.
+
+## Firebase `Firestore`
+
+Firestore is a cloud database that can be handled from your application. When using firstore firebase magically updates your app UI so that you don't have to manage manually. You will mostly use `Firestore` for `Crud` oparations.
+
+### Setup Firestore in Firebase
+
+- From the build dropdown in the sidebar click on **Firebase Database**. ![](/image/posts/firebase-v9/6.png)
+- Then create your Database. ![](/image/posts/firebase-v9/7.png)and Continue with **Test mode**, then selet your Database location and click **Enable**. ![](/image/posts/firebase-v9/8.png)
+- Now the `firestore` is Sucessfully setup.
+
+### Setup Client with Next.js
+
+You can visit firestore documentation on [Firestore Docs](https://firebase.google.com/docs/firestore/quickstart). Make sure to have a NEXT.js application if not then follow the instructions [Create Next App](https://nextjs.org/docs/api-reference/create-next-app).
+Open your terminal in the project root dictionary & run the following.
+
+```bash
+npm install firebase@9.17.2 --save
+```
+
+Then create a new file named `firebase.js` in the project root dictionary.
+Add the following...
+
+```jsx title="firebase.js"
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+  FIREBASE_CONFIGURATION,
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+```
+
+If you don't have a configuration then goto the console of your project in firebase and Create a new **Web Application** to get your firebaseConfig.
+
+Now to `Add data to Firestore` from your client...
+
+```jsx
+// Add a second document with a generated ID.
+import { addDoc, collection } from "firebase/firestore";
+
+try {
+  const docRef = await addDoc(collection(db, "users"), {
+    first: "Alan",
+    middle: "Mathison",
+    last: "Turing",
+    born: 1912,
+  });
+
+  console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+  console.error("Error adding document: ", e);
+}
+```
+
+Then to `Read data` from your collection...
+
+```jsx
+import { collection, getDocs } from "firebase/firestore";
+
+const querySnapshot = await getDocs(collection(db, "users"));
+querySnapshot.forEach((doc) => {
+  console.log(`${doc.id} => ${doc.data()}`);
+});
+```
